@@ -89,8 +89,9 @@ th{background:var(--tint-blue)}
   <div id="sheet"></div>
 
   <section class="card" id="result" hidden>
-    <h2>Your result</h2>
-    <p id="resultText"></p>
+    <h2>Results card</h2>
+    <div id="resultBody"></div>
+    <div class="row" style="margin-top:10px"><button class="btn ghost" id="copyRes" type="button">Copy results</button><span id="copied" class="small muted"></span></div>
   </section>
 </div>
 
@@ -238,11 +239,56 @@ function setScore(key, pts, max) {
   const p = fullMax ? Math.round(got / fullMax * 100) : 0;
   document.getElementById('pct').textContent = p + ' %';
   document.getElementById('bar').style.width = (fullMax ? (Object.keys(state).length / totalParts * 100) : 0) + '%';
-  if (Object.keys(state).length === totalParts) {
-    const r = document.getElementById('result');
-    r.hidden = false;
-    document.getElementById('resultText').textContent = 'You scored ' + got + ' out of ' + fullMax + ' (' + p + ' %). Review every red box above, then try the questions again.';
+  renderResults();
+}
+
+function partsOf(sec) {
+  return sec.items.reduce((n, item) => n + (item.type === 'rev' ? 2 : 1), 0);
+}
+
+function renderResults() {
+  const card = document.getElementById('result');
+  card.hidden = false;
+  const name = (document.getElementById('sname').value || '').trim() || 'Student';
+  const rows = SECTIONS.map((sec, si) => {
+    let got = 0;
+    Object.keys(state).forEach(k => { if (k.split('-')[1] === String(si)) got += state[k].pts; });
+    return {title: sec.title.replace(/^Section \d · /, ''), got, max: partsOf(sec)};
+  });
+  const got = rows.reduce((n, r) => n + r.got, 0);
+  const p = fullMax ? Math.round(got / fullMax * 100) : 0;
+  const answered = Object.keys(state).length;
+
+  // Questions that were answered incorrectly
+  const missed = [];
+  document.querySelectorAll('.q-item').forEach(box => {
+    if (box.querySelector('.fb.bad')) {
+      const q = box.querySelector('.q') || box.querySelector('p');
+      missed.push(q ? q.textContent.trim() : 'Question');
+    }
+  });
+
+  let html = '<p><b>Student:</b> ' + esc(name) + '</p>' +
+    '<table><tr><th>Section</th><th>Marks</th></tr>' +
+    rows.map(r => '<tr><td>' + esc(r.title) + '</td><td>' + r.got + ' / ' + r.max + '</td></tr>').join('') +
+    '<tr><th>Total</th><th>' + got + ' / ' + fullMax + ' (' + p + ' %)</th></tr></table>' +
+    '<p class="small muted" style="margin-top:8px">Answered ' + answered + ' of ' + totalParts + ' parts.</p>';
+  if (missed.length) {
+    html += '<div class="fb bad" style="margin-top:8px"><b>Review these ' + missed.length + ' question' + (missed.length > 1 ? 's' : '') + ':</b><ol>' +
+      missed.map(m => '<li>' + esc(m) + '</li>').join('') + '</ol></div>';
+  } else if (answered) {
+    html += '<div class="fb good" style="margin-top:8px"><b>No mistakes so far.</b></div>';
   }
+  document.getElementById('resultBody').innerHTML = html;
+
+  const summary = 'Naming Ionic Compounds practice\n' + name + ': ' + got + ' / ' + fullMax + ' (' + p + ' %)\n' +
+    rows.map(r => r.title + ': ' + r.got + ' / ' + r.max).join('\n') +
+    (missed.length ? '\nReview: ' + missed.join(' | ') : '');
+  document.getElementById('copyRes').onclick = async () => {
+    const msg = document.getElementById('copied');
+    try { await navigator.clipboard.writeText(summary); msg.textContent = 'Copied.'; }
+    catch (e) { msg.textContent = 'Copy not available here. Select the table and copy it.'; }
+  };
 }
 
 // Full marks and number of graded parts
