@@ -1,0 +1,384 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Naming Ionic Compounds Practice</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=IBM+Plex+Mono:wght@500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#1E3A5F; --gold:#A97F0F; --heat:#CC4B31; --cool:#2D6CA2;
+  --bg:#F7F8FB; --card:#FFFFFF; --ink:#1B2433; --muted:#5A6577; --line:#DDE3EC;
+  --tint-gold:#FBF5E4; --tint-blue:#EAF2FA;
+  --ok:#2E7D4F; --ok-bg:#E6F4EC; --bad:#B3261E; --bad-bg:#FBE9E7; --btn-ink:#FFFFFF;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0F1724; --card:#172232; --ink:#E7ECF3; --muted:#9AA6B8; --line:#2A3850;
+    --tint-gold:#2A2410; --tint-blue:#132438;
+    --navy:#8FB3DE; --gold:#E0B04A; --heat:#F08A6E; --cool:#7FB0E0;
+    --ok:#7CD39A; --ok-bg:#15301F; --bad:#FF9A8F; --bad-bg:#3A1C1A; --btn-ink:#0F1724;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0F1724; --card:#172232; --ink:#E7ECF3; --muted:#9AA6B8; --line:#2A3850;
+  --tint-gold:#2A2410; --tint-blue:#132438;
+  --navy:#8FB3DE; --gold:#E0B04A; --heat:#F08A6E; --cool:#7FB0E0;
+  --ok:#7CD39A; --ok-bg:#15301F; --bad:#FF9A8F; --bad-bg:#3A1C1A; --btn-ink:#0F1724;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Atkinson Hyperlegible',system-ui,sans-serif;font-size:17px;line-height:1.5}
+h1,h2,h3{font-family:'Poppins',system-ui,sans-serif;line-height:1.25;margin:0 0 .4em}
+h1{font-size:1.6rem;color:var(--navy)} h2{font-size:1.25rem;color:var(--navy)} h3{font-size:1rem}
+.wrap{max-width:900px;margin:0 auto;padding:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:14px 0}
+.muted{color:var(--muted)} .small{font-size:.9rem}
+.mono{font-family:'IBM Plex Mono',monospace}
+.q{margin:14px 0 6px}
+.q b{color:var(--navy)}
+.opts{display:grid;gap:6px;margin:8px 0}
+.opt{display:block;width:100%;text-align:left;min-height:46px;padding:10px 14px;border:2px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink);font:inherit;cursor:pointer}
+.opt:hover:not(:disabled){border-color:var(--cool)}
+.opt:disabled{cursor:default}
+.opt.right{border-color:var(--ok);background:var(--ok-bg)}
+.opt.wrong{border-color:var(--bad);background:var(--bad-bg)}
+.tfbtns{display:flex;gap:10px;flex-wrap:wrap}
+.tfbtns .opt{width:auto;min-width:130px}
+.entry{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:6px 0}
+input[type=text]{min-height:46px;font:inherit;font-size:1.05rem;padding:8px 12px;border:2px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink);min-width:0}
+input[type=text]:focus{outline:none;border-color:var(--cool)}
+input.inp-ok{border-color:var(--ok);background:var(--ok-bg)}
+input.inp-bad{border-color:var(--bad);background:var(--bad-bg)}
+.btn{min-height:44px;padding:0 16px;border-radius:10px;border:0;background:var(--navy);color:var(--btn-ink);font:inherit;font-weight:700;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--navy);border:2px solid var(--navy)}
+.btn:disabled{opacity:.45;cursor:default}
+.fb{border-radius:10px;padding:10px 14px;margin:8px 0;font-size:.98rem}
+.fb.good{background:var(--ok-bg);border-left:5px solid var(--ok)}
+.fb.bad{background:var(--bad-bg);border-left:5px solid var(--bad)}
+.fb ol{margin:6px 0 0 18px;padding:0}
+.fb li{margin:3px 0}
+.score{position:sticky;top:0;z-index:2;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 14px;display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;justify-content:space-between}
+.bar{height:8px;border-radius:99px;background:var(--line);overflow:hidden;flex:1 1 100%}
+.bar span{display:block;height:100%;background:var(--gold);width:0;transition:width .3s}
+table{border-collapse:collapse;width:100%}
+td,th{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--tint-blue)}
+.work{background:var(--tint-gold);border-radius:10px;padding:10px 12px;margin:8px 0}
+.work ol{margin:4px 0 0 18px;padding:0}
+@media (max-width:520px){ body{font-size:16px} .tfbtns .opt{min-width:0;flex:1 1 45%} }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <p class="muted small" style="margin:0">Grade 9 Chemistry · Practice sheet</p>
+    <h1>Naming Ionic Compounds</h1>
+    <p class="muted">Answer each question. Your answer is checked straight away. If it is wrong, you get the reason and the correct way to solve it. Duration: about 30 minutes.</p>
+    <label class="small" style="display:block;margin-top:8px">Student name <input type="text" id="sname" style="min-width:260px;margin-left:6px"></label>
+  </header>
+
+  <div class="score card" style="margin-top:14px">
+    <div><b>Score: <span id="total">0</span> / <span id="max">0</span></b></div>
+    <div class="muted small" id="pct">0 %</div>
+    <button class="btn ghost" id="reset" type="button">Start again</button>
+    <div class="bar"><span id="bar"></span></div>
+  </div>
+
+  <div id="sheet"></div>
+
+  <section class="card" id="result" hidden>
+    <h2>Your result</h2>
+    <p id="resultText"></p>
+  </section>
+</div>
+
+<script>
+(() => {
+const SUBD = {'₀':'0','₁':'1','₂':'2','₃':'3','₄':'4','₅':'5','₆':'6','₇':'7','₈':'8','₉':'9'};
+const normFormula = s => s.replace(/[₀-₉]/g, d => SUBD[d]).replace(/\s+/g, '');
+const normName = s => s.toLowerCase().replace(/[^a-z0-9]/g, '');
+function parseCharge(s) {
+  const t = s.replace(/\s+/g, '').replace(/[−–]/g, '-');
+  let m = t.match(/^([+-]?)(\d)$/); if (m) return (m[1] === '-' ? -1 : 1) * +m[2];
+  m = t.match(/^(\d)([+-])$/); if (m) return (m[2] === '-' ? -1 : 1) * +m[1];
+  return null;
+}
+const esc = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;');
+
+// ---------- Sheet content ----------
+const SECTIONS = [
+  {
+    title: 'Section 1 · Basic knowledge and understanding',
+    note: '5 marks. Choose one answer.',
+    items: [
+      {type: 'mcq', q: 'In lead(IV) bromide, what does the Roman numeral IV tell you?',
+        opts: ['The number of bromide ions in the formula', 'The charge on the lead ion, +4', 'The total number of atoms in the formula', 'The group that lead belongs to'],
+        answer: 1,
+        why: ['Bromide ions are counted from the criss-cross, not from the Roman numeral.', 'Correct. The numeral is the charge on the metal ion.', 'The numeral does not count atoms. It gives the charge.', 'Group numbers are not written in names. The numeral is the charge.'],
+        correct: 'The Roman numeral is the charge on the metal ion. In lead(IV) bromide the lead ion is Pb⁴⁺.'},
+      {type: 'mcq', q: 'What is the charge on manganese in manganese(IV) oxide?',
+        opts: ['+2', '+4', '−4', '−2'],
+        answer: 1,
+        why: ['+2 would be manganese(II) oxide. Check the numeral: IV means +4.', 'Correct. IV means +4.', 'Metal ions are positive, so the charge cannot be negative.', 'Oxide is −2, but the question asks for the manganese ion. Its charge is set by the numeral: +4.'],
+        correct: 'The numeral IV means the manganese ion is +4 (Mn⁴⁺).'},
+      {type: 'mcq', q: 'Which metal is an exception to the Roman numeral rule (its name has no numeral)?',
+        opts: ['Tin (Sn)', 'Silver (Ag)', 'Lead (Pb)', 'Manganese (Mn)'],
+        answer: 1,
+        why: ['Tin is not an exception, so its name needs a numeral, for example tin(II) chloride.', 'Correct. Silver is one of the exceptions (with zinc), so its name has no numeral.', 'Lead is not an exception, so its name needs a numeral.', 'Manganese is not an exception, so its name needs a numeral.'],
+        correct: 'Silver and zinc are the exceptions. Silver is always Ag⁺, so silver chloride has no numeral.'},
+      {type: 'mcq', q: 'A gold ion has a charge of +1. What is its name?',
+        opts: ['gold(I)', 'gold(II)', 'gold(III)', 'gold(V)'],
+        answer: 0,
+        why: ['Correct. The numeral equals the charge, so +1 is (I).', 'II would mean +2, which is a different ion.', 'III would mean +3, which is a different ion.', 'V would mean +5, which does not match the +1 charge.'],
+        correct: 'Charge +1 → numeral I → gold(I).'},
+      {type: 'mcq', q: 'Which is the correct name for MnBr₂?',
+        opts: ['manganese bromide', 'manganese(II) bromide', 'manganese(I) bromide', 'manganese(IV) bromide'],
+        answer: 1,
+        why: ['Manganese forms more than one ion, so it needs a numeral. Leaving it out is incomplete.', 'Correct. Two bromide ions give −2, so each manganese is +2 (II).', 'I would mean +1. Two bromide ions (−2) need a +2 metal, not +1.', 'IV would mean +4. Two bromide ions (−2) cannot be balanced by +4.'],
+        correct: 'Reverse criss-cross: 2 × (−1) = −2, so Mn is +2 → manganese(II) bromide.'}
+    ]
+  },
+  {
+    title: 'Section 2 · True or false',
+    note: '4 marks. Decide whether each statement is true.',
+    items: [
+      {type: 'tf', q: 'The transition metals are found in groups 3 to 12 of the periodic table.', answer: true,
+        why: 'True. The transition metals are in groups 3 to 12.'},
+      {type: 'tf', q: 'The Roman numeral in a name tells you how many metal atoms are in the formula.', answer: false,
+        why: 'False. The numeral is the charge on the metal ion. The number of atoms is set by the criss-cross.'},
+      {type: 'tf', q: 'Tin is an exception to the Roman numeral rule.', answer: false,
+        why: 'False. Only silver and zinc are the exceptions, so tin needs a numeral.'},
+      {type: 'tf', q: 'To find the charge of a transition metal from a formula, we reverse criss-cross.', answer: true,
+        why: 'True. Reverse criss-cross finds the metal charge from the non-metal atoms in the formula.'}
+    ]
+  },
+  {
+    title: 'Section 3 · Reverse criss-cross',
+    note: '4 marks. For each formula, find the charge on the metal (show your working) and write the full name.',
+    items: [
+      {type: 'rev', formula: 'PbBr₂', charge: 2, name: 'lead(II) bromide', metal: 'lead', anion: 'bromide', atoms: 2, anionCharge: -1,
+        steps: ['Bromide is −1. Two bromide ions give −1 × 2 = −2.', 'The compound is neutral, so the lead total must be +2.', 'There is one lead atom, so the lead ion is +2 → Roman numeral II.']},
+      {type: 'rev', formula: 'Mn₂O₃', charge: 3, name: 'manganese(III) oxide', metal: 'manganese', anion: 'oxide', atoms: 3, anionCharge: -2, metalAtoms: 2,
+        steps: ['Oxide is −2. Three oxide ions give −2 × 3 = −6.', 'The compound is neutral, so the manganese total must be +6.', 'Two manganese atoms share +6: +6 ÷ 2 = +3 each → Roman numeral III.']}
+    ]
+  },
+  {
+    title: 'Section 4 · Criss-cross: writing formulas',
+    note: '2 marks. Write the formula for each name.',
+    items: [
+      {type: 'formula', q: 'gold(I) iodide', answer: 'AuI',
+        steps: ['Gold(I) is Au⁺. Iodide is I⁻.', 'Criss-cross: Au⁺ and I⁻ have charges of 1 and 1, so the subscripts are 1 and 1.', 'Leave out the 1s → AuI.']},
+      {type: 'formula', q: 'tin(IV) fluoride', answer: 'SnF4',
+        steps: ['Tin(IV) is Sn⁴⁺. Fluoride is F⁻.', 'Criss-cross: Sn has 4 and F has 1 → Sn¹F⁴.', 'Leave out the 1 → SnF₄.']}
+    ]
+  },
+  {
+    title: 'Section 5 · Critical thinking',
+    note: '3 marks. Read the scenario and answer the questions.',
+    scenario: 'A school science store in Dubai has two bottles labelled only "TIN CHLORIDE". Bottle X contains SnCl₂. Bottle Y contains SnCl₄.',
+    items: [
+      {type: 'mcq', q: 'Is the label "tin chloride" correct for both bottles?',
+        opts: ['Yes, both bottles are the same compound', 'No, the two compounds have different tin charges and need different names'],
+        answer: 1,
+        why: ['Not quite. SnCl₂ and SnCl₄ have different charges on tin, so they are different compounds.', 'Correct. The labels need the numeral to tell the two compounds apart.'],
+        correct: 'SnCl₂ has Sn²⁺ and SnCl₄ has Sn⁴⁺, so the names need the numerals.'},
+      {type: 'formula-name', q: 'Write the correct name for the contents of Bottle Y (SnCl₄).', answer: 'tin(IV) chloride',
+        steps: ['Cl⁻ is −1 and there are 4 Cl atoms: −4 total.', 'The tin total must be +4, and there is one tin atom, so Sn is +4.', 'Name: tin(IV) chloride.']},
+      {type: 'explain', q: 'In one sentence, explain why "tin chloride" is not enough.',
+        keywords: [['numeral', 'roman', 'charge', 'two ions', 'more than one', 'different charge', 'different ions']],
+        model: 'Tin forms more than one ion, so the Roman numeral shows which charge, and therefore which compound, is meant.'}
+    ]
+  }
+];
+
+// marks per item
+function marksOf(item) {
+  if (item.type === 'rev') return 2;
+  return 1;
+}
+// Per-part keys for scoring
+const state = {};  // key -> {got:boolean|number}
+let maxTotal = 0;
+
+// ---------- Render ----------
+const sheet = document.getElementById('sheet');
+let keyCounter = 0;
+
+SECTIONS.forEach((sec, si) => {
+  const card = document.createElement('section');
+  card.className = 'card';
+  let h = '<h2>' + sec.title + '</h2><p class="muted small">' + sec.note + '</p>';
+  if (sec.scenario) h += '<div class="work">' + sec.scenario + '</div>';
+  card.innerHTML = h;
+  sheet.appendChild(card);
+
+  sec.items.forEach((item, ii) => {
+    const box = document.createElement('div');
+    box.className = 'q-item';
+    card.appendChild(box);
+    const id = si + '-' + ii;
+    if (item.type === 'mcq') renderMcq(box, item, id);
+    else if (item.type === 'tf') renderTf(box, item, id);
+    else if (item.type === 'rev') renderRev(box, item, id);
+    else if (item.type === 'formula') renderFormula(box, item, id, 'formula');
+    else if (item.type === 'formula-name') renderFormula(box, item, id, 'name');
+    else if (item.type === 'explain') renderExplain(box, item, id);
+  });
+});
+
+function setScore(key, pts, max) {
+  state[key] = {pts, max};
+  let got = 0, tot = 0;
+  Object.values(state).forEach(v => { got += v.pts; tot += v.max; });
+  maxTotal = Object.keys(state).length ? tot : 0;
+  document.getElementById('total').textContent = got;
+  document.getElementById('max').textContent = fullMax;
+  const p = fullMax ? Math.round(got / fullMax * 100) : 0;
+  document.getElementById('pct').textContent = p + ' %';
+  document.getElementById('bar').style.width = (fullMax ? (Object.keys(state).length / totalParts * 100) : 0) + '%';
+  if (Object.keys(state).length === totalParts) {
+    const r = document.getElementById('result');
+    r.hidden = false;
+    document.getElementById('resultText').textContent = 'You scored ' + got + ' out of ' + fullMax + ' (' + p + ' %). Review every red box above, then try the questions again.';
+  }
+}
+
+// Full marks and number of graded parts
+let fullMax = 0, totalParts = 0;
+SECTIONS.forEach(sec => sec.items.forEach(item => {
+  if (item.type === 'rev') { fullMax += 2; totalParts += 2; }        // charge + name per row, 1 mark each
+  else { fullMax += 1; totalParts += 1; }
+}));
+document.getElementById('max').textContent = fullMax;
+
+function stepList(steps) {
+  return '<ol>' + steps.map(s => '<li>' + s + '</li>').join('') + '</ol>';
+}
+
+function renderMcq(box, item, id) {
+  box.innerHTML = '<p class="q"><b>' + item.q + '</b></p><div class="opts"></div><div class="fb-slot"></div>';
+  const optsEl = box.querySelector('.opts'), slot = box.querySelector('.fb-slot');
+  const key = 'mcq-' + id;
+  item.opts.forEach((o, k) => {
+    const b = document.createElement('button');
+    b.type = 'button'; b.className = 'opt'; b.textContent = o;
+    b.onclick = () => {
+      if (state[key]) return;
+      const ok = k === item.answer;
+      optsEl.querySelectorAll('.opt').forEach(x => x.disabled = true);
+      b.classList.add(ok ? 'right' : 'wrong');
+      if (!ok) optsEl.children[item.answer].classList.add('right');
+      const reason = item.why ? (Array.isArray(item.why) ? item.why[k] : item.why) : '';
+      slot.innerHTML = '<div class="fb ' + (ok ? 'good' : 'bad') + '"><b>' + (ok ? '✓ Correct.' : '✗ Not quite.') + '</b> ' + reason + (ok ? '' : '<br><b>Correct way:</b> ' + item.correct) + (ok && item.correct ? '<br><span class="small">' + item.correct + '</span>' : '') + '</div>';
+      setScore(key, ok ? 1 : 0, 1);
+    };
+    optsEl.appendChild(b);
+  });
+}
+
+function renderTf(box, item, id) {
+  box.innerHTML = '<p class="q"><b>' + item.q + '</b></p><div class="tfbtns"><button class="opt" type="button" data-v="1">True</button><button class="opt" type="button" data-v="0">False</button></div><div class="fb-slot"></div>';
+  const key = 'tf-' + id;
+  box.querySelectorAll('[data-v]').forEach(b => b.onclick = () => {
+    if (state[key]) return;
+    const v = b.dataset.v === '1';
+    const ok = v === item.answer;
+    box.querySelectorAll('[data-v]').forEach(x => x.disabled = true);
+    b.classList.add(ok ? 'right' : 'wrong');
+    box.querySelector('[data-v="' + (item.answer ? 1 : 0) + '"]').classList.add('right');
+    box.querySelector('.fb-slot').innerHTML = '<div class="fb ' + (ok ? 'good' : 'bad') + '"><b>' + (ok ? '✓ Correct.' : '✗ Not quite.') + '</b> ' + item.why + '</div>';
+    setScore(key, ok ? 1 : 0, 1);
+  });
+}
+
+function renderRev(box, item, id) {
+  const key1 = 'rev-' + id + '-c', key2 = 'rev-' + id + '-n';
+  box.innerHTML =
+    '<p class="q"><b>Formula: <span class="mono">' + item.formula + '</span></b></p>' +
+    '<div class="work"><b>Working</b><br><span class="small muted">Write your working in the box, then fill in the charge and the name.</span>' +
+    '<textarea rows="2" style="width:100%;margin-top:6px;font:inherit;border-radius:8px;border:2px solid var(--line);padding:6px;background:var(--card);color:var(--ink)" placeholder="e.g. anion total = ..."></textarea></div>' +
+    '<div class="entry"><label>Charge on the metal: <input type="text" class="inp-c" size="6" placeholder="e.g. +2"></label>' +
+    '<button class="btn ghost chk-c" type="button">Check charge</button></div>' +
+    '<div class="fb-c"></div>' +
+    '<div class="entry"><label>Full name: <input type="text" class="inp-n" size="26" placeholder="e.g. ..."></label>' +
+    '<button class="btn ghost chk-n" type="button">Check name</button></div>' +
+    '<div class="fb-n"></div>';
+  const ic = box.querySelector('.inp-c'), inn = box.querySelector('.inp-n');
+  const fc = box.querySelector('.fb-c'), fn = box.querySelector('.fb-n');
+  const showSteps = () => '<div class="work"><b>Correct way (reverse criss-cross)</b>' + stepList(item.steps) + '</div>';
+
+  box.querySelector('.chk-c').onclick = () => {
+    if (state[key1]) return;
+    const v = parseCharge(ic.value);
+    const ok = v === item.charge;
+    ic.classList.add(ok ? 'inp-ok' : 'inp-bad');
+    let reason;
+    if (v === null) reason = 'Write the charge with its sign, for example +2.';
+    else if (v === -item.charge) reason = 'The sign is wrong. Metal ions are positive, so the charge is ' + (item.charge > 0 ? '+' : '') + item.charge + '.';
+    else reason = 'That is not the total for one metal ion. Divide the metal total by the number of metal atoms.';
+    fc.innerHTML = '<div class="fb ' + (ok ? 'good' : 'bad') + '"><b>' + (ok ? '✓ Correct.' : '✗ Not quite.') + '</b> ' + (ok ? 'The charge on the metal is ' + (item.charge > 0 ? '+' : '') + item.charge + '.' : reason) + (ok ? '' : showSteps()) + '</div>';
+    setScore(key1, ok ? 1 : 0, 1);
+    ic.disabled = true; box.querySelector('.chk-c').disabled = true;
+  };
+
+  box.querySelector('.chk-n').onclick = () => {
+    if (state[key2]) return;
+    const ok = normName(inn.value) === normName(item.name);
+    inn.classList.add(ok ? 'inp-ok' : 'inp-bad');
+    let reason = '';
+    if (!ok) {
+      if (!/\b(iv|v|i{1,3})\b/i.test(inn.value)) reason ='The Roman numeral is missing. Name = metal + numeral for the metal charge + anion name. ';
+      else reason = 'The numeral does not match the charge you worked out. ';
+    }
+    fn.innerHTML = '<div class="fb ' + (ok ? 'good' : 'bad') + '"><b>' + (ok ? '✓ Correct.' : '✗ Not quite.') + '</b> ' + (ok ? 'The full name is ' + item.name + '.' : reason + 'The correct name is <b>' + item.name + '</b>.' + showSteps()) + '</div>';
+    setScore(key2, ok ? 1 : 0, 1);
+    inn.disabled = true; box.querySelector('.chk-n').disabled = true;
+  };
+}
+
+function renderFormula(box, item, id, mode) {
+  const key = 'f-' + id;
+  const prompt = mode === 'formula' ? 'Write the formula for <b>' + item.q + '</b>' : '';
+  box.innerHTML = '<p class="q">' + prompt + '</p>' +
+    '<div class="entry"><input type="text" class="inp" size="14" placeholder="type here">' +
+    '<button class="btn chk" type="button">Check</button></div><div class="fb-slot"></div>';
+  const inp = box.querySelector('.inp'), slot = box.querySelector('.fb-slot');
+  const check = () => {
+    if (state[key]) return;
+    const ok = normFormula(inp.value) === normFormula(item.answer);
+    inp.classList.add(ok ? 'inp-ok' : 'inp-bad');
+    slot.innerHTML = '<div class="fb ' + (ok ? 'good' : 'bad') + '"><b>' + (ok ? '✓ Correct.' : '✗ Not quite.') + '</b> ' + (ok ? '' : 'The correct answer is <b>' + item.answer + '</b>.') + '<div class="work"><b>Correct way</b>' + stepList(item.steps) + '</div></div>';
+    setScore(key, ok ? 1 : 0, 1);
+    inp.disabled = true; box.querySelector('.chk').disabled = true;
+  };
+  box.querySelector('.chk').onclick = check;
+  inp.addEventListener('keydown', e => { if (e.key === 'Enter') check(); });
+}
+
+function renderExplain(box, item, id) {
+  const key = 'ex-' + id;
+  box.innerHTML = '<p class="q"><b>' + item.q + '</b></p>' +
+    '<div class="entry" style="width:100%"><input type="text" class="inp" style="flex:1 1 100%" placeholder="type one sentence"></div>' +
+    '<button class="btn chk" type="button">Check</button><div class="fb-slot"></div>';
+  const inp = box.querySelector('.inp'), slot = box.querySelector('.fb-slot');
+  box.querySelector('.chk').onclick = () => {
+    if (state[key]) return;
+    const t = inp.value.toLowerCase();
+    const ok = item.keywords[0].some(k => t.includes(k)) && /more than one|two|different|several/.test(t);
+    inp.classList.add(ok ? 'inp-ok' : 'inp-bad');
+    slot.innerHTML = '<div class="fb ' + (ok ? 'good' : 'bad') + '"><b>' + (ok ? '✓ Good reasoning.' : '✗ Not quite.') + '</b> A strong answer says: <i>' + item.model + '</i></div>';
+    setScore(key, ok ? 1 : 0, 1);
+    inp.disabled = true; box.querySelector('.chk').disabled = true;
+  };
+}
+
+document.getElementById('reset').onclick = () => {
+  Object.keys(state).forEach(k => delete state[k]);
+  location.reload();
+};
+})();
+</script>
+</body>
+</html>
